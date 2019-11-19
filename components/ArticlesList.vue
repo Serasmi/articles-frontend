@@ -1,6 +1,6 @@
 <template>
-  <div v-if="items.length">
-    <v-card v-for="item in items" class="mb-2">
+  <div v-if="articles.length">
+    <v-card v-for="item in articles" class="mb-2">
       <v-card-title>{{ item.title }}</v-card-title>
       <v-card-subtitle class="text-left">
         <a :href="item.link" target="_blank">{{ item.link }}</a>
@@ -17,18 +17,15 @@
 
 <script>
 export default {
-  data() {
-    return {
-      items: []
+  computed: {
+    articles() {
+      console.log(this.$store);
+      return this.$store.state.articles;
     }
   },
   mounted() {
-    this.$axios
-      .$get('http://localhost:8080/api/v1/articles')
-      .then(response => {
-        this.items = response
-      })
-      .catch(error => console.error(error))
+    console.log('mounted');
+    return this.$store.dispatch('getArticles');
   }
-}
+};
 </script>
