@@ -1,11 +1,15 @@
 <template>
   <v-app>
     <v-app-bar
+      color="blue darken-2"
       :clipped-left="clipped"
       fixed
+      dark
       app
     >
-      Navbar
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-toolbar-title>Articles frontend</v-toolbar-title>
+      <v-spacer></v-spacer>
     </v-app-bar>
     <v-content>
       <v-container>
