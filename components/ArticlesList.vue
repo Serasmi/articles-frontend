@@ -16,17 +16,19 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        items: []
-      }
-    },
-    mounted() {
-      this.$axios
-        .$get('http://localhost:8080/api/v1/articles')
-        .then((response) => { this.items = response })
-        .catch((error) => console.error(error));
+export default {
+  data() {
+    return {
+      items: []
     }
+  },
+  mounted() {
+    this.$axios
+      .$get('http://localhost:8080/api/v1/articles')
+      .then(response => {
+        this.items = response
+      })
+      .catch(error => console.error(error))
   }
+}
 </script>
