@@ -19,12 +19,10 @@
 export default {
   computed: {
     articles() {
-      console.log(this.$store);
       return this.$store.state.articles;
     }
   },
   mounted() {
-    console.log('mounted');
     return this.$store.dispatch('getArticles');
   }
 };
