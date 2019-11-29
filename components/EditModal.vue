@@ -6,7 +6,7 @@
           Edit article
         </v-card-title>
 
-        <v-card-text> Article content: {{ selected }} </v-card-text>
+        <v-card-text> {{ selected }} </v-card-text>
 
         <v-divider />
 

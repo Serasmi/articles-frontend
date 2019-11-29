@@ -22,7 +22,9 @@ const store = () =>
         state.articles = payload.sort(sortByDate);
       },
       selectArticle(state, { id }) {
-        state.selected = id ? { id } : {};
+        state.selected = id
+          ? { ...state.articles.find(article => article.id === id) }
+          : {};
       }
     },
     actions: {
