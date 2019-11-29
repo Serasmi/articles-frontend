@@ -42,13 +42,27 @@
 import { isObjectEmpty } from '~/utils';
 import { formatUnixDate } from '../utils';
 
+const defaultArticleState = {
+  id: 0,
+  createdAt: 0,
+  title: '',
+  link: ''
+};
+
 export default {
   computed: {
-    isShow() {
-      return isObjectEmpty(this.$store.state.selected);
+    isShow: {
+      get() {
+        return isObjectEmpty(this.$store.state.selected);
+      },
+      set(_isShow) {
+        !_isShow && this.$store.commit('selectArticle', {});
+      }
     },
     selected() {
-      return this.$store.state.selected;
+      const { selected } = this.$store.state;
+
+      return selected.id ? selected : defaultArticleState;
     }
   },
   data() {

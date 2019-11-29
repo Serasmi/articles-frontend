@@ -1,4 +1,4 @@
-const formatUnixDate = uDate =>
+const formatUnixDate = (uDate = 0) =>
   new Date(uDate)
     .toISOString()
     .replace('T', ' ')
