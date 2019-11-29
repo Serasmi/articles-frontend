@@ -1,13 +1,13 @@
 <template>
-  <div v-if="articles.length">
-    <v-card v-for="item in articles" class="article mb-2">
-      <v-card-title class="title" @click="showEditModal(item.id)">{{
+  <div v-if="articles.length" class="articles">
+    <v-card v-for="item in articles" class="article mb-3">
+      <v-card-title class="title mb-2" @click="showEditModal(item.id)">{{
         item.title
       }}</v-card-title>
       <v-card-subtitle class="text-left">
         <a :href="item.link" target="_blank">{{ item.link }}</a>
       </v-card-subtitle>
-      <v-card-text class="mt-n4 text-left">
+      <v-card-text class="mt-n2 text-left">
         {{ formatUnixDate(item.createdAt) }}
       </v-card-text>
     </v-card>
@@ -39,9 +39,19 @@ export default {
 </script>
 
 <style lang="scss">
-.article {
-  .title {
-    cursor: pointer;
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .article {
+    width: calc(50% - 6px);
+
+    .title {
+      font-size: 16px !important;
+      line-height: 1.3em;
+      cursor: pointer;
+    }
   }
 }
 </style>
