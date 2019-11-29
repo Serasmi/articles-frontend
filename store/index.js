@@ -24,16 +24,13 @@ const store = () =>
     },
     actions: {
       async getArticles() {
-        const data = await this.$axios.$get(
-          `${Config.apiUrl}/articles`
-        );
+        const data = await this.$axios.$get(`${Config.apiUrl}/articles`);
         this.commit('setArticles', data);
       },
       async addArticle({ state }) {
-        await this.$axios.$post(
-          `${Config.apiUrl}/articles`,
-          { link: state.link }
-        );
+        await this.$axios.$post(`${Config.apiUrl}/articles`, {
+          link: state.link
+        });
         this.dispatch('getArticles');
       }
     }

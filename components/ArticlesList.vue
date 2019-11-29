@@ -6,7 +6,7 @@
         <a :href="item.link" target="_blank">{{ item.link }}</a>
       </v-card-subtitle>
       <v-card-text class="mt-n4 text-left">
-        {{ new Date(item.createdAt).toISOString() }}
+        {{ formatUnixDate(item.createdAt) }}
       </v-card-text>
     </v-card>
   </div>
@@ -16,11 +16,16 @@
 </template>
 
 <script>
+import { formatUnixDate } from '../utils';
+
 export default {
   computed: {
     articles() {
       return this.$store.state.articles;
     }
+  },
+  methods: {
+    formatUnixDate: date => formatUnixDate(date)
   },
   mounted() {
     return this.$store.dispatch('getArticles');
