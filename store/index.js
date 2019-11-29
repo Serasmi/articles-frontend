@@ -20,6 +20,9 @@ const store = () =>
       },
       setArticles(state, payload) {
         state.articles = payload.sort(sortByDate);
+      },
+      selectArticle(state, { id }) {
+        state.selected = id ? { id } : {};
       }
     },
     actions: {

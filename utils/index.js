@@ -1,8 +1,11 @@
-const formatUnixDate = (uDate) =>
+const formatUnixDate = uDate =>
   new Date(uDate)
     .toISOString()
     .replace('T', ' ')
     .replace('Z', '')
     .split('.')[0];
 
-export { formatUnixDate };
+const isObjectEmpty = (obj = {}) =>
+  typeof obj === 'object' && Boolean(Object.keys(obj).length);
+
+export { formatUnixDate, isObjectEmpty };

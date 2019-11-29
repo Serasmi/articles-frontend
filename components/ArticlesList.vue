@@ -1,7 +1,9 @@
 <template>
   <div v-if="articles.length">
-    <v-card v-for="item in articles" class="mb-2">
-      <v-card-title>{{ item.title }}</v-card-title>
+    <v-card v-for="item in articles" class="article mb-2">
+      <v-card-title class="title" @click="showEditModal(item.id)">{{
+        item.title
+      }}</v-card-title>
       <v-card-subtitle class="text-left">
         <a :href="item.link" target="_blank">{{ item.link }}</a>
       </v-card-subtitle>
@@ -25,10 +27,21 @@ export default {
     }
   },
   methods: {
-    formatUnixDate: date => formatUnixDate(date)
+    formatUnixDate: date => formatUnixDate(date),
+    showEditModal(id) {
+      this.$store.commit('selectArticle', { id });
+    }
   },
   mounted() {
     return this.$store.dispatch('getArticles');
   }
 };
 </script>
+
+<style lang="scss">
+.article {
+  .title {
+    cursor: pointer;
+  }
+}
+</style>
